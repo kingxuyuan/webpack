@@ -1,0 +1,13 @@
+h1 {
+    color: $reddd;
+    display: flex;
+    align-items: center;
+}
+.page {
+    width: 400px;
+    height: 200px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../images/img2.jpg');
+}
