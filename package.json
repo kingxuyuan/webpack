@@ -5,13 +5,14 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack --config ./build/webpack.prod.conf",
-        "start": "webpack-dev-server --config ./build/webpack.dev.conf.js"
+        "build": "webpack --config ./build/webpack.prod.conf --env",
+        "start": "webpack-dev-server --config ./build/webpack.dev.conf --env"
     },
     "author": "lemon",
     "license": "ISC",
     "devDependencies": {
         "autoprefixer": "^9.4.10",
+        "cross-env": "^7.0.3",
         "css-loader": "5.2.7",
         "css-minimizer-webpack-plugin": "^3.1.1",
         "extract-text-webpack-plugin": "^3.0.2",
@@ -21,6 +22,7 @@
         "mini-css-extract-plugin": "^2.4.1",
         "node-sass": "^6.0.1",
         "postcss-loader": "^6.1.1",
+        "preload-webpack-plugin": "^3.0.0-beta.4",
         "sass": "^1.42.1",
         "sass-loader": "^12.1.0",
         "style-loader": "^3.3.0",

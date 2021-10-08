@@ -2,13 +2,14 @@
  * @Author: 大侠传授两招吧
  * @Date: 2021-10-01 15:56:24
  * @LastEditors: 大侠传授两招吧
- * @LastEditTime: 2021-10-07 21:34:43
+ * @LastEditTime: 2021-10-08 15:04:46
  * @Description: webpack 生成配置
  */
 const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 const WebpackBaseConfig = require("./webpack.base.conf");
@@ -91,6 +92,20 @@ module.exports = merge(WebpackBaseConfig, {
 	},
 
 	plugins: [
+        // new PreloadWebpackPlugin({
+		// 	excludeHtmlNames: ["prefetch.html"],    // 多个html时，排除对方，否则会同时产生 preload 和 prefetch 的 link 标签
+		// }),
+		// 预加载
+		new PreloadWebpackPlugin({
+			rel: "preload",
+		    include: 'allChunks'
+		}),
+		//  // 加载将来页面肯能需要的资源
+		 new PreloadWebpackPlugin({
+		    rel: 'prefetch',
+		    include: 'allChunks'
+		}),
+
 		// css 文件分离
 		new MiniCssExtractPlugin({
 			filename: "css/[hash:10].css",
