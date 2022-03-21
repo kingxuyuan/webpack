@@ -2,7 +2,7 @@
  * @Author: 大侠传授两招吧
  * @Date: 2021-10-01 15:56:24
  * @LastEditors: 大侠传授两招吧
- * @LastEditTime: 2021-10-08 15:04:46
+ * @LastEditTime: 2022-03-21 22:34:22
  * @Description: webpack 生成配置
  */
 const { merge } = require("webpack-merge");
@@ -33,7 +33,7 @@ module.exports = merge(WebpackBaseConfig, {
 						loader: "sass-loader",
 						options: {
 							sourceMap: true,
-							additionalData: `@import  "/src/assets/style/global.scss";`,
+							// additionalData: `@import  "/src/assets/style/global.scss";`,
 						},
 					},
 				],
@@ -67,10 +67,10 @@ module.exports = merge(WebpackBaseConfig, {
 			chunks: "all", // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
 			maxInitialRequests: 10,
 			cacheGroups: {
-				moment: {
-					name: "moment", // 单独将 moment 拆包
+				dayjs: {
+					name: "dayjs", // 单独将 dayjs 拆包
 					priority: 15,
-					test: /[\\/]node_modules[\\/]moment[\\/]/,
+					test: /[\\/]node_modules[\\/]dayjs[\\/]/,
 					filename: "js/[name].[contenthash].js",
 				},
 				vendors: {
@@ -92,24 +92,33 @@ module.exports = merge(WebpackBaseConfig, {
 	},
 
 	plugins: [
-        // new PreloadWebpackPlugin({
-		// 	excludeHtmlNames: ["prefetch.html"],    // 多个html时，排除对方，否则会同时产生 preload 和 prefetch 的 link 标签
-		// }),
 		// 预加载
 		new PreloadWebpackPlugin({
 			rel: "preload",
-		    include: 'allChunks'
+            excludeHtmlNames: ['pc.html'],
+            include: ['h5']
 		}),
-		//  // 加载将来页面肯能需要的资源
-		 new PreloadWebpackPlugin({
+        new PreloadWebpackPlugin({
 		    rel: 'prefetch',
-		    include: 'allChunks'
+            excludeHtmlNames: ['pc.html'],
+            include: ['h5']
+		}),
+        // 加载将来页面肯能需要的资源
+        new PreloadWebpackPlugin({
+		    rel: 'preload',
+            excludeHtmlNames: ['h5.html'],
+            include: ['pc']
+		}),
+        new PreloadWebpackPlugin({
+		    rel: 'prefetch',
+            excludeHtmlNames: ['h5.html'],
+            include: ['pc']
 		}),
 
 		// css 文件分离
 		new MiniCssExtractPlugin({
-			filename: "css/[hash:10].css",
-			chunkFilename: "css/[hash:10][contenthash].css",
+			filename: "css/[name][contenthash].css",
+			chunkFilename: "css/[name][contenthash].css",
 		}),
 		new CssMinimizerPlugin(),
 		new UglifyWebpackPlugin({

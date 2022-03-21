@@ -1,0 +1,84 @@
+<!--
+ * @Author: 大侠传授两招吧
+ * @Date: 2022-03-20 22:12:46
+ * @LastEditors: 大侠传授两招吧
+ * @LastEditTime: 2022-03-21 20:29:03
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+        name="viewport"
+        content=" width=device-width, initial-scale=1.0,shrink-to-fit=no maximum-scale=1.0, minimum-scale=1.0,user-scalable=no, viewport-fit=cover" />
+    <title>皮球直播下载</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <script>
+        if (isMobile()) {
+            location.href = './h5.html';
+        }
+        function isMobile() {
+            let flag = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            return flag;
+        }
+    </script>
+</head>
+<body>
+    <div class="page">
+        <img src="./images/bg.jpg" alt="">
+        <div class="page-head">
+            <div class="page-head-box">
+                <img src="./images/head.png" alt="">
+                <div class="download"></div>
+            </div>
+        </div>
+        <div class="page-qrcode">
+            <img class="qrcode" src="https://img.beimengkj.com/image/site/20220318/c31d4c17cad6adb3942c6446ce4a4ca5.png" />
+        </div>
+        <div class="page-btns">
+            <div class="btn ios">
+                <img src="./images/ios-bg.png" alt="">
+                <span>IOS下载</span>
+            </div>
+            <div class="btn">
+                <img src="./images/android-bg.png" alt="">
+                <span>安卓下载</span>
+            </div>
+        </div>
+        <div class="page-foot">
+            <div class="page-foot-main">
+                <div class="page-foot-main-left">
+                    <img src="./images/foot-logo.png" alt="">
+                    <div class="box">
+                        <div>
+                            <img src="./images/icon1.png" alt="">
+                            <span>全球赛事</span>
+                        </div>
+                        <div>
+                            <img src="./images/icon2.png" alt="">
+                            <span>高清直播</span>
+                        </div>
+                        <div>
+                            <img src="./images/icon3.png" alt="">
+                            <span>专业直播</span>
+                        </div>
+                        <div>
+                            <img src="./images/icon4.png" alt="">
+                            <span>海量数据</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-foot-main-right">
+                    <div class="btn ios">IOS下载</div>
+                    <div class="btn">安卓下载</div>
+                    <img class="qrcode" src="https://img.beimengkj.com/image/site/20220318/c31d4c17cad6adb3942c6446ce4a4ca5.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</body>
+</html>
